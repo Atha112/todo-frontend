@@ -41,7 +41,7 @@ export default function TodoItem({ todo, onToggle, onDelete }: TodoItemProps) {
         </label>
       </div>
 
-      {/* Aksi: Detail & Hapus */}
+      {/* Aksi Detail & Hapus */}
       <div className="flex items-center gap-2 shrink-0">
         <Link
           href={`/task/${todo.id}`}

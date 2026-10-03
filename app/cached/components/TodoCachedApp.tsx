@@ -22,7 +22,6 @@ export default function TodoCachedApp({ initialTodos }: TodoCachedAppProps) {
     const newTodo: Todo = {
       id: Date.now(),
       title,
-      description: 'Tugas baru yang tersimpan di localStorage.',
       completed: false,
       createdAt: new Date().toISOString().split('T')[0],
     };
@@ -53,7 +52,7 @@ export default function TodoCachedApp({ initialTodos }: TodoCachedAppProps) {
   return (
     <div>
       {/* Form Input Tambah Tugas (Shared Component dari app/components/TodoForm) */}
-      <TodoForm onAddTodo={handleAddTodo} />
+      <TodoForm onAdd={handleAddTodo} />
 
       {/* Indikator Status Caching & Reset */}
       <div className="flex items-center justify-between text-xs text-gray-500 mb-2 px-1">
@@ -73,8 +72,8 @@ export default function TodoCachedApp({ initialTodos }: TodoCachedAppProps) {
       {/* List Tugas (Shared Component dari app/components/TodoList) */}
       <TodoList
         todos={todos}
-        onToggleTodo={handleToggleTodo}
-        onDeleteTodo={handleDeleteTodo}
+        onToggle={handleToggleTodo}
+        onDelete={handleDeleteTodo}
       />
     </div>
   );

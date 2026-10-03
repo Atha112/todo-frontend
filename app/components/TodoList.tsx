@@ -6,11 +6,11 @@ import { Todo } from '@/types/todo';
 
 type TodoListProps = {
   todos: Todo[];
-  onToggleTodo: (id: number) => void;
-  onDeleteTodo: (id: number) => void;
+  onToggle: (id: number) => void;
+  onDelete: (id: number) => void;
 };
 
-export default function TodoList({ todos, onToggleTodo, onDeleteTodo }: TodoListProps) {
+export default function TodoList({ todos, onToggle, onDelete }: TodoListProps) {
   return (
     <div className="mt-6">
       <div className="flex items-center justify-between mb-4">
@@ -20,16 +20,23 @@ export default function TodoList({ todos, onToggleTodo, onDeleteTodo }: TodoList
         </span>
       </div>
 
-      <ul className="space-y-3">
-        {todos.map((todo) => (
-          <TodoItem
-            key={todo.id}
-            todo={todo}
-            onToggle={onToggleTodo}
-            onDelete={onDeleteTodo}
-          />
-        ))}
-      </ul>
+      {todos.length === 0 ? (
+        <div className="border-2 border-dashed border-gray-200 rounded-xl p-8 text-center my-4">
+          <p className="font-semibold text-gray-700">Belum ada tugas.</p>
+          <p className="text-xs text-gray-500 mt-1">Tambahkan tugas baru di atas untuk memulai!</p>
+        </div>
+      ) : (
+        <ul className="space-y-3">
+          {todos.map((todo) => (
+            <TodoItem
+              key={todo.id}
+              todo={todo}
+              onToggle={onToggle}
+              onDelete={onDelete}
+            />
+          ))}
+        </ul>
+      )}
     </div>
   );
 }

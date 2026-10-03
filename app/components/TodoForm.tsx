@@ -5,10 +5,10 @@ import { Input } from '@/app/components/ui/input';
 import { Button } from '@/app/components/ui/button';
 
 type TodoFormProps = {
-  onAddTodo: (title: string) => void;
+  onAdd: (title: string) => void;
 };
 
-export default function TodoForm({ onAddTodo }: TodoFormProps) {
+export default function TodoForm({ onAdd }: TodoFormProps) {
   // Local state untuk controlled input form
   const [title, setTitle] = useState('');
 
@@ -20,7 +20,7 @@ export default function TodoForm({ onAddTodo }: TodoFormProps) {
     if (!trimmedTitle) return;
 
     // Kirim data ke komponen induk
-    onAddTodo(trimmedTitle);
+    onAdd(trimmedTitle);
 
     // Reset input form
     setTitle('');

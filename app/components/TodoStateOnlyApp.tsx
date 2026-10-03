@@ -17,7 +17,6 @@ export default function TodoStateOnlyApp({ initialTodos }: TodoStateOnlyAppProps
     const newTodo: Todo = {
       id: Date.now(),
       title,
-      description: "Tugas baru yang ditambahkan ke state komponen.",
       completed: false,
       createdAt: new Date().toISOString().split('T')[0],
     };
@@ -41,13 +40,13 @@ export default function TodoStateOnlyApp({ initialTodos }: TodoStateOnlyAppProps
   return (
     <div>
       {/* Form Input */}
-      <TodoForm onAddTodo={handleAddTodo} />
+      <TodoForm onAdd={handleAddTodo} />
       
       {/* List Tugas */}
       <TodoList
         todos={todos}
-        onToggleTodo={handleToggleTodo}
-        onDeleteTodo={handleDeleteTodo}
+        onToggle={handleToggleTodo}
+        onDelete={handleDeleteTodo}
       />
     </div>
   );

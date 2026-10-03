@@ -22,7 +22,7 @@ export default function ApiTodoList({ initialTasks }: ApiTodoListProps) {
 
     // 2. Simulasi Update ke Dummy JSON via todoService
     try {
-      await todoService.updateTodoStatus(id, targetStatus);
+      await todoService.updateTodo(id, { is_completed: targetStatus });
     } catch (err) {
       console.warn('Simulasi update ke API DummyJSON gagal (fallback state):', err);
     }

@@ -35,8 +35,8 @@ export async function getTasks(params?: FetchTodosParams): Promise<{
 
 export async function getTaskById(id: number | string): Promise<TaskItem | null> {
   try {
-    const raw = await todoService.fetchTodoById(id);
-    return formatApiTodoToTask(raw);
+    const raw = await todoService.getTodoById(id);
+    return formatApiTodoToTask({ ...raw, userId: 1 });
   } catch (error) {
     console.error(`[lib/tasks.ts] Error mengambil task ID ${id}:`, error);
     return null;
